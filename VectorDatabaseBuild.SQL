@@ -29,11 +29,11 @@ create table if not exists TestingDevice (
 create table if not exists WorkOrder (
 	
     workOrderNum varchar(25) primary key,
-    orderDate varchar(20),
+    orderDate datetime,
     userName varchar(20),
     deviceSerialNum varchar(10),
-    longitude float(),
-    latitude float(),
+    longitude float,
+    latitude float,
     accuracy varchar(40),
     
 	foreign key (userName) references Employee (userName),
@@ -46,12 +46,12 @@ create table if not exists SignalThreshold (
 
 	thresholdId integer auto_increment primary key,
 	workOrderNum varchar(25),
-    rssiThreshold int,
-    rssiHighThreshold int,
-    rscpThreshold int,
-    rscpHighThreshold int,    
-    rsrpThreshold int,
-    rsrpHighThreshold int,
+    rssiThreshold float,
+    rssiHighThreshold float,
+    rscpThreshold float,
+    rscpHighThreshold float,    
+    rsrpThreshold float,
+    rsrpHighThreshold float,
     
     foreign key (workOrderNum) references WorkOrder (workOrderNum)
     
@@ -62,9 +62,9 @@ create table if not exists TelstraBlade (
 
 	telBlaResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult int,
-    rscpResult int,
-    rsrpResult int,
+    rssiResult float,
+    rscpResult float,
+    rsrpResult float,
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,
@@ -79,9 +79,9 @@ create table if not exists TelstraWhip (
 
 	telWhiResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult decimal,
-    rscpResult decimal,
-    rsrpResult decimal,
+    rssiResult float,
+    rscpResult float,
+    rsrpResult float,
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,
@@ -97,9 +97,9 @@ create table if not exists VodafoneBlade (
 
 	vodBlaResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult decimal,
-    rscpResult decimal,
-    rsrpResult decimal,
+    rssiResult float,
+    rscpResult float,
+    rsrpResult float,
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,
@@ -115,9 +115,9 @@ create table if not exists VodafoneWhip (
 
 	vodWhiResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult decimal,
-    rscpResult decimal,
-    rsrpResult decimal,
+    rssiResult float,
+    rscpResult float,
+    rsrpResult float,
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,
@@ -133,9 +133,9 @@ create table if not exists ExternalModem (
 
 	extModResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult decimal,
-    rscpResult decimal,
-    rsrpResult decimal,
+    rssiResult float,
+    rscpResult float,
+    rsrpResult float,
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,

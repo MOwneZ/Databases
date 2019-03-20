@@ -14,12 +14,12 @@ insert into TestingDevice Values('SDS-026C','CARIVOU','[-76.0, -85.0]',893144040
 insert into TestingDevice Values('SDS-061C','DIXIE','[-83.0, -74.0, -79.0]',89314404000266650267,89610180002249046930,null,'3.88','GAT-17R3','2.2.5');
 insert into TestingDevice Values('SDS-043C','CORSSRAY','[-76.0, -72.0, -66.0]',89314404000248186935,89610180002249048341,null,'3.92','GAT-17R3','2.2.5');
 
-insert into WorkOrder Values('WO-00251301',date_format(str_to_date('19-2-2019--13-14', "%d-%c-%Y--%H-%i"), "%d-%c-%Y--%H-%i"),'Eevee','SDS-196B',null,null,'kCLLocationAccuracyKilometer');
-insert into WorkOrder Values('WO-00104116',date_format(str_to_date('1-5-2018--8-5', "%d-%c-%Y--%H-%i"), "%d-%c-%Y--%H-%i"),'Pikachu','SDS-043C','152.752432376289','-27.6047716895375','kCLLocationAccuracyKilometer');
-insert into WorkOrder Values('WO-00105349',date_format(str_to_date('30-4-2018--14-48', "%d-%c-%Y--%H-%i"), "%d-%c-%Y--%H-%i"),'DIXIE','SDS-061C','139.34259429587','-35.6776790181507','kCLLocationAccuracyKilometer');
-insert into WorkOrder Values('WO-00110610',date_format(str_to_date('17-4-2018--10-41', "%d-%c-%Y--%H-%i"), "%d-%c-%Y--%H-%i"),'Snorlax','SDS-008C','152.984367638172','-27.4171041995673','kCLLocationAccuracyKilometer');
-insert into WorkOrder Values('WO-00110925',date_format(str_to_date('26-4-2018--10-31', "%d-%c-%Y--%H-%i"), "%d-%c-%Y--%H-%i"),'Charizard','SDS-049C','153.024695282944','-27.1806907654062','kCLLocationAccuracyKilometer');
-insert into WorkOrder Values('WO-00248593',date_format(str_to_date('19-2-2019--8-42', "%d-%c-%Y--%H-%i"), "%d-%c-%Y--%H-%i"),'Mewtwo','SDS-026C','152.971914761231','-27.0792295037818','kCLLocationAccuracyKilometer');
+insert into WorkOrder Values('WO-00251301',date_format(str_to_date("19-2-2019--13-14", "%d-%m-%Y--%H-%i"), '%Y-%m-%d %H:%i'),'Eevee','SDS-196B',null,null,'kCLLocationAccuracyKilometer');
+insert into WorkOrder Values('WO-00104116',date_format(str_to_date("1-5-2018--8-5", "%d-%m-%Y--%H-%i"), '%Y-%m-%d %H:%i'),'Pikachu','SDS-043C','152.752432376289','-27.6047716895375','kCLLocationAccuracyKilometer');
+insert into WorkOrder Values('WO-00105349',date_format(str_to_date("30-4-2018--14-48", "%d-%m-%Y--%H-%i"), '%Y-%m-%d %H:%i'),'Celebi','SDS-061C','139.34259429587','-35.6776790181507','kCLLocationAccuracyKilometer');
+insert into WorkOrder Values('WO-00110610',date_format(str_to_date("17-4-2018--10-41", "%d-%m-%Y--%H-%i"), '%Y-%m-%d %H:%i'),'Snorlax','SDS-008C','152.984367638172','-27.4171041995673','kCLLocationAccuracyKilometer');
+insert into WorkOrder Values('WO-00110925',date_format(str_to_date("26-4-2018--10-31", "%d-%m-%Y--%H-%i"), '%Y-%m-%d %H:%i'),'Charizard','SDS-049C','153.024695282944','-27.1806907654062','kCLLocationAccuracyKilometer');
+insert into WorkOrder Values('WO-00248593',date_format(str_to_date("19-2-2019--8-42'", "%d-%m-%Y--%H-%i"), '%Y-%m-%d %H:%i'),'Mewtwo','SDS-026C','152.971914761231','-27.0792295037818','kCLLocationAccuracyKilometer');
 
 insert into SignalThreshold Values(0,'WO-00251301','6.0','12.0','15.0','30.0','10.0','20.0');
 insert into SignalThreshold Values(0,'WO-00104116','6.0','12.0','15.0','30.0','10.0','20.0');
