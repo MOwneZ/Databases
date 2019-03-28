@@ -1,3 +1,5 @@
+drop database VectorDatabase; 
+
 create database vectorDatabase;
 
 use vectorDatabase;
@@ -9,21 +11,17 @@ create table if not exists Employee (
 
 )engine = innodb; 
 
-  
+
 														-- Testing Device Table
 create table if not exists TestingDevice (
 	
     deviceSerialNum varchar(10) primary key,
-    bluetoothName varchar(10),
-    bluetoothSignal LONGTEXT,
-    simVodafone varchar(50),
-    simTelstra varchar(50),
-    simExternal varchar(50),
+    deviceType varchar(10),
     batteryLvl varchar(6),
-    firmwareNo varchar(10),
     appVersionNo varchar(6)
 
 )engine = innodb;  
+
 
 														-- Work Order Table
 create table if not exists WorkOrder (
@@ -32,8 +30,8 @@ create table if not exists WorkOrder (
     orderDate datetime,
     userName varchar(20),
     deviceSerialNum varchar(10),
-    longitude float,
-    latitude float,
+    longitude decimal(16,13),
+    latitude decimal(16,13),
     accuracy varchar(40),
     
 	foreign key (userName) references Employee (userName),
@@ -41,17 +39,36 @@ create table if not exists WorkOrder (
     
 )engine = innodb;       
 
+
+														-- Signal Tester Table
+create table if not exists SignalTester (
+	
+    signalTesterNum int primary key auto_increment,
+    workOrderNum varchar(25),
+    firmwareNo varchar(10),
+    modemType varchar(10),
+    bluetoothName varchar(10),
+    bluetoothSignal LONGTEXT,
+    simVodafone text,
+    simTelstra text,
+    simExternal text,
+    
+    foreign key (workOrderNum) references WorkOrder (workOrderNum)
+
+)engine = innodb;  
+
+
 														-- Signal Threshold Table
 create table if not exists SignalThreshold (
 
 	thresholdId integer auto_increment primary key,
 	workOrderNum varchar(25),
-    rssiThreshold float,
-    rssiHighThreshold float,
-    rscpThreshold float,
-    rscpHighThreshold float,    
-    rsrpThreshold float,
-    rsrpHighThreshold float,
+    rssiThreshold float(3,1),
+    rssiHighThreshold float(3,1),
+    rscpThreshold float(3,1),
+    rscpHighThreshold float(3,1),    
+    rsrpThreshold float(3,1),
+    rsrpHighThreshold float(3,1),
     
     foreign key (workOrderNum) references WorkOrder (workOrderNum)
     
@@ -62,9 +79,9 @@ create table if not exists TelstraBlade (
 
 	telBlaResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult float,
-    rscpResult float,
-    rsrpResult float,
+    rssiResult float(16,14),
+    rscpResult float(16,14),
+    rsrpResult float(16,14),
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,
@@ -79,9 +96,9 @@ create table if not exists TelstraWhip (
 
 	telWhiResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult float,
-    rscpResult float,
-    rsrpResult float,
+    rssiResult float(16,14),
+    rscpResult float(16,14),
+    rsrpResult float(16,14),
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,
@@ -97,9 +114,9 @@ create table if not exists VodafoneBlade (
 
 	vodBlaResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult float,
-    rscpResult float,
-    rsrpResult float,
+    rssiResult float(16,14),
+    rscpResult float(16,14),
+    rsrpResult float(16,14),
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,
@@ -115,9 +132,9 @@ create table if not exists VodafoneWhip (
 
 	vodWhiResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult float,
-    rscpResult float,
-    rsrpResult float,
+    rssiResult float(16,14),
+    rscpResult float(16,14),
+    rsrpResult float(16,14),
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,
@@ -133,9 +150,9 @@ create table if not exists ExternalModem (
 
 	extModResultsNo int primary key auto_increment,
     workOrderNum varchar(25),
-    rssiResult float,
-    rscpResult float,
-    rsrpResult float,
+    rssiResult float(16,14),
+    rscpResult float(16,14),
+    rsrpResult float(16,14),
     timeout bool,
     network varchar(20),
     rawDataArray LONGTEXT,
@@ -143,7 +160,4 @@ create table if not exists ExternalModem (
     
 	foreign key (workOrderNum) references WorkOrder (workOrderNum)
 
-)engine = innodb;       
-
-
-drop database VectorDatabase;                                                
+)engine = innodb;                                                      
